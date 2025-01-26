@@ -12,15 +12,18 @@
     "grunt-browserify": "~2.0.7",
     "grunt-cli": "^1.5.0",
     "grunt-contrib-watch": "~0.5.3",
+    "grunt-prettier": "^2.2.0",
     "grunt-shell": "~0.6.4",
     "grunt-terser": "^2.0.0",
     "jest": "^29.7.0",
     "minimist": "0.0.8",
-    "pngjs": "~0.4.0"
+    "pngjs": "~0.4.0",
+    "prettier": "^3.4.2"
   },
   "scripts": {
     "build": "grunt build",
     "buildgrid": "grunt buildgrid",
+    "format": "grunt format",
     "watch": "grunt watch",
     "test": "cd tests && jest"
   },
@@ -40,6 +43,7 @@
   "author": "robscanlon@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "@tweenjs/tween.js": "^25.0.0",
     "hexasphere.js": "*",
     "pusher.color": "~0.2.4",
     "quadtree2": "~0.5.3",
