@@ -4,17 +4,34 @@
   "description": "encom-globe",
   "main": "src/Globe.js",
   "devDependencies": {
-    "minimist": "0.0.8",
+    "@babel/core": "^7.26.7",
+    "@babel/preset-env": "^7.26.7",
+    "babel-jest": "^29.7.0",
+    "browserify": "~3.41.0",
     "grunt": "~0.4.2",
+    "grunt-browserify": "~2.0.7",
+    "grunt-cli": "^1.5.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-shell": "~0.6.4",
-    "browserify": "~3.41.0",
-    "grunt-browserify": "~2.0.7",
-    "pngjs": "~0.4.0",
-    "grunt-contrib-uglify": "~0.4.0"
+    "grunt-terser": "^2.0.0",
+    "jest": "^29.7.0",
+    "minimist": "0.0.8",
+    "pngjs": "~0.4.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "grunt build",
+    "buildgrid": "grunt buildgrid",
+    "watch": "grunt watch",
+    "test": "cd tests && jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "repository": {
     "type": "git",
@@ -24,10 +41,10 @@
   "license": "MIT",
   "dependencies": {
     "hexasphere.js": "*",
-    "quadtree2": "~0.5.3",
-    "vec2": "~1.5.0",
-    "three": "~0.66.2",
     "pusher.color": "~0.2.4",
-    "tween.js": "~0.13.0"
+    "quadtree2": "~0.5.3",
+    "three": "~0.66.2",
+    "tween.js": "~0.13.0",
+    "vec2": "~1.5.0"
   }
 }
