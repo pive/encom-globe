@@ -280,39 +280,29 @@ function Globe(width, height, opts){
     this.quadtree = new Quadtree2(new Vec2(180, 360), 5);
     this.active = true;
 
-    var defaults = {
-        font: "Inconsolata",
-        baseColor: "#ffcc00",
-        markerColor: "#ffcc00",
-        pinColor: "#00eeee",
-        satelliteColor: "#ff0000",
-        blankPercentage: 0,
-        thinAntarctica: .01, // only show 1% of antartica... you can't really see it on the map anyhow
-        mapUrl: "resources/equirectangle_projection.png",
-        introLinesAltitude: 1.10,
-        introLinesDuration: 2000,
-        introLinesColor: "#8FD8D8",
-        introLinesCount: 60,
-        scale: 1.0,
-        dayLength: 28000,
-        pointsPerDegree: 1.1,
-        pointSize: .6,
-        pointsVariance: .2,
-        maxPins: 500,
-        maxMarkers: 4,
-        data: [],
-        tiles: [],
-        viewAngle: 0
-    };
-
-    for(var i in defaults){
-        if(!this[i]){
-            this[i] = defaults[i];
-            if(opts[i]){
-                this[i] = opts[i];
-            }
-        }
-    }
+    // Assign options, overriding defaults
+    this.font = opts.font || "Inconsolata";
+    this.baseColor = opts.baseColor || "#ffcc00";
+    this.markerColor = opts.markerColor || "#ffcc00";
+    this.pinColor = opts.pinColor || "#00eeee";
+    this.satelliteColor = opts.satelliteColor || "#ff0000";
+    this.blankPercentage = opts.blankPercentage || 0;
+    this.thinAntarctica = opts.thinAntarctica || 0.01;
+    this.mapUrl = opts.mapUrl || "resources/equirectangle_projection.png";
+    this.introLinesAltitude = opts.introLinesAltitude || 1.10;
+    this.introLinesDuration = opts.introLinesDuration || 2000;
+    this.introLinesColor = opts.introLinesColor || "#8FD8D8";
+    this.introLinesCount = opts.introLinesCount || 60;
+    this.scale = opts.scale || 1.0;
+    this.dayLength = opts.dayLength || 28000;
+    this.pointsPerDegree = opts.pointsPerDegree || 1.1;
+    this.pointSize = opts.pointSize || 0.6;
+    this.pointsVariance = opts.pointsVariance || 0.2;
+    this.maxPins = opts.maxPins || 500;
+    this.maxMarkers = opts.maxMarkers || 4;
+    this.data = opts.data || [];
+    this.tiles = opts.tiles || [];
+    this.viewAngle = opts.viewAngle || 0;
 
     this.setScale(this.scale);
 
@@ -648,5 +638,8 @@ Globe.prototype.tick = function(){
 
 }
 
-module.exports = Globe;
-
+// CommonJS export for Node.js and Browserify
+module.exports = {
+  Globe,
+  createParticles
+};
